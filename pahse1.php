@@ -31,6 +31,11 @@ class Student
 
 
     public function validateMobileNumber() {
+       // if (preg_match("/^09[0-9]{9}$/", $mobile)) {
+       //     return "The mobile number is valid.";
+       // } else {
+          //  return "The mobile number is invalid.";
+       //  } 
        
     }
   
@@ -42,6 +47,6 @@ class Student
 
     
 }
-$user=new Student ("john","lee","12","0936139974", "12");
+//$user=new Student ("john","lee","12","0936139974", "12");
 
-    echo $user->fullName();
+   // echo $user->fullName();
