@@ -12,7 +12,8 @@ class Student
 
     public string $average;
 
-    public function __constructor($firstname,$lastname,$idNumber,$mobile,$average){
+    public function __construct($firstname,$lastname,$idNumber,$mobile,$average)
+    {
         $this->firstname=$firstname;
         $this->lastname=$lastname;
         $this->idNumber=$idNumber;
@@ -24,17 +25,23 @@ class Student
     {
         return $this->firstname .' ' .$this->lastname;
     }
-     
-    function validateMobileNumber($mobile) {
-        if (preg_match("/^09[0-9]{9}$/", $mobile)) {
-            return "The mobile number is valid.";
-        } else {
-            return "The mobile number is invalid.";
-        }
+
+    
+    
+
+
+    public function validateMobileNumber() {
+       
+    }
+  
+
+
+    public function Calcualateaverage (){
+    
     }
 
-   public function Calcualateaverage (){
     
-   }
-
 }
+$user=new Student ("john","lee","12","0936139974", "12");
+
+    echo $user->fullName();
