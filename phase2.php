@@ -127,52 +127,93 @@ class Course
 }
 class Board 
 {
-    public function addTeacher()
+    public $Students=[];
+
+    public $teachers=[];
+
+    public $Courses=[];
+
+
+    public function addTeacher(Teacher $teacher)
     {
+        $this->teachers[]=$teacher;
 
     }
 
-    public function removeTeacher()
+    public function removeTeacher(Teacher $teacher)
     {
+        $key = array_search($teacher, $this->teachers);
+        if($key !== false){
+            unset($this->teachers[$key]);
+            return "teacher removed";
+        }
+        return "teacher does not exist";
 
     }
 
-    public function addStudent()
+    public function addStudent(Student $student)
     {
+        $this->Students[] = $student;
 
     }
 
-    public function removeStudent()
+    public function removeStudent(Student $student)
     {
+        $key = array_search($student, $this->Students);
+        if($key !== false){
+            unset($this->students[$key]);
+            return "student is removed";
+        }
+        return "student does not exist";
+    
+    }
+
+    public function addCourse(Course $course)
+    {
+        $this->Courses[] = $course;
+    }
+    public function removeCourse(Course $course)
+    {
+        $key = array_search($course, $this->Courses);
+        if($key !== false)
+        {
+            unset($this->courses[$key]);
+            return "course is removed";
+        }
+        return "course does not exist";
+
+    }
+    public function assignTeacherToCourse(Teacher $teacher,Course $course)
+    {
+        $course->teacher = $teacher;
+        return "The teacher is assigned";
 
     }
 
-    public function addCourse()
+    public function removeTeacherFromCourse(Teacher $teacher,Course $course)
     {
-
+        if ($course->teacher === $teacher) {
+            $course->teacher = null;
+        return "The teacher is removed";
     }
-    public function removeCourse()
-    {
-
-    }
-    public function assignTeacherToCourse()
-    {
-
     }
 
-    public function removeTeacherFromCourse()
+    public function assignStudentsToCourse(Student $student, Course $course) 
     {
-
+        $course->students[] = $student;
+        return "The student is assigned";
     }
-
-    public function assignStudentsToCourse()
+    public function removeStudentsFromCourse(Student $student, Course $course)
     {
-
+       $key=array_search($student,$course->students);
+       if ($key !== false)
+       {
+        unset($this->students[$key]);
+        return "student is removed ";
+       }
+       return "student does not exist";
     }
-    public function removeStudentsFromCourse()
-    {
-
-    }
+    
 }
 
 trait courseManagement
@@ -203,19 +244,19 @@ $sheida=new Student("2","sheida,samadi","12","09121210000","111","sheidasamadi@g
 $mohamadali=new Teacher("1","mohamadali","Nazemi","1","0912111111","mahamadalinazemi@gmail.com");
 $course= new Course ("laravel","111","1",$mohamadali);
 
-echo $diana->fullName();
-echo "\n";
-echo $sheida->fullName();
-echo "\n";
-echo $course->getCourseInfo();
+//echo $diana->fullName();
+//echo "\n";
+//echo $sheida->fullName();
+//echo "\n";
+//echo $course->getCourseInfo();
 
-$course->addStudent($diana);
-$course->addStudent($sheida);
-$course->removeStudent($diana);
-$course->getcourseinfo();
-$course->getStudents();
-$course->assignTeacher($mohamadali);
-echo "\n";
-$course->getCourseInfo();
+//$course->addStudent($diana);
+//$course->addStudent($sheida);
+//$course->removeStudent($diana);
+//$course->getcourseinfo();
+//$course->getStudents();
+//$course->assignTeacher($mohamadali);
+//echo "\n";
+//$course->getCourseInfo();
 
 
