@@ -21,17 +21,17 @@ class Student
         $this->average=$average;
     }
 
-    public function fullname (): string 
+    public function fullName (): string 
     {
         return $this->firstname .' ' .$this->lastname;
-    }
+    } 
 
     
     
 
 
     public function validateMobileNumber() {
-       // if (preg_match("/^09[0-9]{9}$/", $mobile)) {
+       // if (preg_match("/^09[0-9]{9}$/", $this->mobile)) {
        //     return "The mobile number is valid.";
        // } else {
           //  return "The mobile number is invalid.";
